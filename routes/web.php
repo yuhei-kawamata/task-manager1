@@ -1,24 +1,18 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\TaskController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return redirect()->route('login');
 });
 
+// 認証が必要なルート
 Route::middleware('auth')->group(function () {
-    Route::get('/tasks', fn() => 'タスク一覧（準備中）')->name('tasks.index');
+    // カテゴリーのCRUDルート
     Route::resource('categories', CategoryController::class);
+
+    // タスクのCRUDルート（仮ルートから置き換え）
+    Route::resource('tasks', TaskController::class);
 });
