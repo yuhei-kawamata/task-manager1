@@ -28,7 +28,7 @@ class Task extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function getPriorityLabelAttibute(): string
+    public function getPriorityLabelAttribute(): string
     {
         return match ($this->priority) {
             1 => '低',
